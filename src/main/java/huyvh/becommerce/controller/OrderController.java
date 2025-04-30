@@ -1,10 +1,10 @@
 package huyvh.becommerce.controller;
 
-import huyvh.becommerce.dto.request.UserRequest;
+import huyvh.becommerce.dto.request.OrderRequest;
 import huyvh.becommerce.dto.response.ErrorResponse;
+import huyvh.becommerce.dto.response.OrderResponse;
 import huyvh.becommerce.dto.response.ResponseData;
-import huyvh.becommerce.dto.response.UserResponse;
-import huyvh.becommerce.service.UserService;
+import huyvh.becommerce.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -15,16 +15,16 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 
 @RestController
+@RequestMapping("/api/order")
 @RequiredArgsConstructor
-@RequestMapping("/api/user")
-public class UserController {
-    private final UserService userService;
+public class OrderController {
+    private final OrderService orderService;
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody UserRequest request) {
+    @PostMapping("/add")
+    public ResponseEntity<?> create(@RequestBody OrderRequest request) {
         try {
-            UserResponse responseDTO = userService.update(request, id);
-            return ResponseEntity.ok(new ResponseData<>(HttpStatus.OK.value(), "update user successfully!",
+            OrderResponse responseDTO = orderService.add(request);
+            return ResponseEntity.ok(new ResponseData<>(HttpStatus.OK.value(), "save Order successfully!",
                     responseDTO, null, null, null, null));
         } catch (Exception e) {
             String stackTraceString = Arrays.toString(e.getStackTrace());
@@ -45,8 +45,8 @@ public class UserController {
             @RequestParam(value = "size", defaultValue = "10", required = false) Integer size
     ) {
         try {
-            Page<UserResponse> responseDTO = userService.findAll(page, size);
-            return ResponseEntity.ok(new ResponseData<>(HttpStatus.OK.value(), "find all user successfully!",
+            Page<OrderResponse> responseDTO = orderService.findAll(page, size);
+            return ResponseEntity.ok(new ResponseData<>(HttpStatus.OK.value(), "find all Order successfully!",
                     responseDTO, null, null, null, null));
         } catch (Exception e) {
             String stackTraceString = Arrays.toString(e.getStackTrace());

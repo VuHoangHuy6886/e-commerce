@@ -23,6 +23,7 @@ public class UploadImageController {
             FileValidator.validateImageFile(file);
             String imageUrl = cloudinaryService.uploadFile(file, folder);
             return ResponseEntity.ok().body(Map.of(
+                    "status", 200,
                     "message", "Upload successful",
                     "url", imageUrl
             ));

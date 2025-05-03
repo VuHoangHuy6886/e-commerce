@@ -8,7 +8,7 @@ import huyvh.becommerce.model.User;
 public class OrderMapper {
     public static Order addConvertToOrder(OrderRequest request, User user) {
         Order order = Order.builder()
-                .userId(user)
+                .user(user)
                 .totalPrice(request.getTotalPrice())
                 .totalQuantity(request.getTotalQuantity())
                 .paymentMethod(request.getPaymentMethod())
@@ -22,7 +22,7 @@ public class OrderMapper {
     public static Order updateConvertToOrder(OrderRequest request, User user, Long id) {
         Order order = Order.builder()
                 .id(id)
-                .userId(user)
+                .user(user)
                 .totalPrice(request.getTotalPrice())
                 .totalQuantity(request.getTotalQuantity())
                 .paymentMethod(request.getPaymentMethod())
@@ -36,8 +36,8 @@ public class OrderMapper {
     public static OrderResponse convertToOrderResponse(Order order) {
         OrderResponse response = OrderResponse.builder()
                 .id(order.getId())
-                .userId(String.valueOf(order.getUserId().getId()))
-                .userName(order.getUserId().getName())
+                .userId(String.valueOf(order.getUser().getId()))
+                .userName(order.getUser().getName())
                 .totalPrice(order.getTotalPrice())
                 .totalQuantity(order.getTotalQuantity())
                 .paymentMethod(order.getPaymentMethod())

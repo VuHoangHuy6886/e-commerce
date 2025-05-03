@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "tbl_products")
+@Table(name = "tbl_product")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,7 +31,7 @@ public class Product {
     private Category category;
 
     @Column(columnDefinition = "TEXT")
-    private String describe;
+    private String description;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     private List<OrderDetails> orderDetails = new ArrayList<>();

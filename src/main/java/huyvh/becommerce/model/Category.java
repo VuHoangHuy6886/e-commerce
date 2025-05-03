@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "tbl_categorys")
+@Table(name = "tbl_category")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

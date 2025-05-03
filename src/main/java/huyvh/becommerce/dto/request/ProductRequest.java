@@ -15,7 +15,7 @@ public class ProductRequest {
 
     private String status;
 
-    private Category category;
+    private String category;
 
     private String describe;
 }

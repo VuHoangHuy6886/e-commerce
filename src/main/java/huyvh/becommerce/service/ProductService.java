@@ -20,13 +20,13 @@ public class ProductService {
     private final CategoryRepo categoryRepo;
 
     public ProductResponse add(ProductRequest request) {
-        Category category = categoryRepo.findById(request.getCategory().getId()).orElseThrow(() -> new RuntimeException("Category not found"));
+        Category category = categoryRepo.findById(Long.parseLong(request.getCategory())).orElseThrow(() -> new RuntimeException("Category not found"));
         Product product = ProductMapper.addConvertToProduct(request, category);
         return ProductMapper.ConvertToProductResponse(productRepo.save(product));
     }
 
     public ProductResponse update(ProductRequest request, Long id) {
-        Category category = categoryRepo.findById(request.getCategory().getId()).orElseThrow(() -> new RuntimeException("Category not found"));
+        Category category = categoryRepo.findById(Long.parseLong(request.getCategory())).orElseThrow(() -> new RuntimeException("Category not found"));
         Product product = ProductMapper.updateConvertToProduct(request, category, id);
         return ProductMapper.ConvertToProductResponse(productRepo.save(product));
     }

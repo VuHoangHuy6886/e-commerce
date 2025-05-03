@@ -38,7 +38,7 @@ public class ProductMapper {
                 .status(product.getStatus())
                 .categoryId(String.valueOf(product.getCategory().getId()))
                 .categoryName(product.getCategory().getName())
-                .describe(product.getDescribe())
+                .describe(product.getDescription())
                 .build();
         return response;
     }

@@ -20,6 +20,7 @@ public class CategoryService {
 
     public Category update(CategoryRequest request, Long id) {
         Category category = categoryRepo.findById(id).orElseThrow(() -> new RuntimeException("Category id not found"));
+        category.setName(request.getName());
         return categoryRepo.save(category);
     }
 

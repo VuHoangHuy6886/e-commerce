@@ -19,6 +19,7 @@ import java.util.Arrays;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api/product")
 public class ProductController {
     private final ProductService productService;
 

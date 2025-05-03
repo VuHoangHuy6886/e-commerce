@@ -47,6 +47,7 @@ public class UserService {
         userRepository.save(user);
 
         return AuthResponse.builder()
+                .status(200)
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)
                 .message("User registered successfully")
@@ -72,6 +73,8 @@ public class UserService {
         userRepository.save(user);
 
         return AuthResponse.builder()
+                .user(UserMapper.convertToUserResponse(user))
+                .status(200)
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)
                 .message("Login successful")
@@ -105,6 +108,7 @@ public class UserService {
         userRepository.save(user);
 
         return AuthResponse.builder()
+                .status(200)
                 .accessToken(newAccessToken)
                 .refreshToken(newRefreshToken)
                 .message("Token refreshed successfully")

@@ -21,7 +21,7 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User userId;
+    private User user;
 
     @Column(name = "total_price", precision = 10, scale = 2)
     private BigDecimal totalPrice;

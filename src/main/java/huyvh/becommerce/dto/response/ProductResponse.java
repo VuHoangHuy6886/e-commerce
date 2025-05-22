@@ -23,4 +23,6 @@ public class ProductResponse {
     private String categoryName;
 
     private String describe;
+
+    private String urlImage;
 }

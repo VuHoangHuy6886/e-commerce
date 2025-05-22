@@ -26,6 +26,8 @@ public class Product {
 
     private String status;
 
+    private String urlImage;
+
     @ManyToOne
     @JoinColumn(name = "category", nullable = false)
     private Category category;

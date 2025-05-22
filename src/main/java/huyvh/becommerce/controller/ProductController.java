@@ -67,6 +67,9 @@ public class ProductController {
             @RequestParam(value = "size", defaultValue = "10", required = false) Integer size
     ) {
         try {
+            if (page < 0) {
+                page = 0;
+            }
             Page<ProductResponse> responseDTO = productService.findAll(page, size);
             return ResponseEntity.ok(new ResponseData<>(HttpStatus.OK.value(), "find all products successfully!",
                     responseDTO, null, null, null, null));
@@ -95,6 +98,8 @@ public class ProductController {
                     direction = Sort.Direction.ASC) Pageable pageable
     ) {
         try {
+            System.out.println("categoryId: " + categoryId);
+            System.out.println("sắp xếp : "+sortDirection);
             Page<ProductResponse> responseDTO = productService.searchProducts(name, minPrice, maxPrice, status, categoryId, sortDirection, pageable);
             return ResponseEntity.ok(new ResponseData<>(HttpStatus.OK.value(), "find products successfully!",
                     responseDTO, null, null, null, null));

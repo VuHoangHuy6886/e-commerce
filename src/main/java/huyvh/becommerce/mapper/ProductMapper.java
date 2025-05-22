@@ -13,6 +13,7 @@ public class ProductMapper {
                 .price(request.getPrice())
                 .quantity(request.getQuantity())
                 .status(request.getStatus())
+                .urlImage(request.getUrlImage())
                 .build();
         return product;
     }
@@ -24,6 +25,7 @@ public class ProductMapper {
                 .name(request.getName())
                 .price(request.getPrice())
                 .quantity(request.getQuantity())
+                .urlImage(request.getUrlImage())
                 .status(request.getStatus())
                 .build();
         return product;
@@ -39,6 +41,7 @@ public class ProductMapper {
                 .categoryId(String.valueOf(product.getCategory().getId()))
                 .categoryName(product.getCategory().getName())
                 .describe(product.getDescription())
+                .urlImage(product.getUrlImage())
                 .build();
         return response;
     }

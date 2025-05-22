@@ -1,6 +1,5 @@
 package huyvh.becommerce.dto.request;
 
-import huyvh.becommerce.model.Category;
 import lombok.Getter;
 
 @Getter
@@ -18,4 +17,6 @@ public class ProductRequest {
     private String category;
 
     private String describe;
+
+    private String urlImage;
 }
